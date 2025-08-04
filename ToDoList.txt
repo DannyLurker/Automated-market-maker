@@ -1,2 +1,51 @@
-1. buat DexFactory 
+1. buat DexPair 
+Core Storage Variables
+
+Store the two token addresses (token0 and token1)
+Track reserves for both tokens
+Store the factory address that created this pair
+Add a minimum liquidity constant (usually 1000)
+
+Initialization
+
+Create an initialize function that the factory calls after deployment
+Set the token addresses and factory address
+Ensure it can only be called once
+
+Liquidity Management
+
+Mint function: Allow users to add liquidity by depositing both tokens proportionally
+Burn function: Allow users to remove liquidity and get their tokens back
+Sync function: Update reserves to match actual token balances
+
+Trading Functions
+
+Swap function: Core trading logic that exchanges one token for another
+Implement the constant product formula (x * y = k)
+Apply trading fees (typically 0.3%)
+Update reserves after each swap
+
+Price Oracle
+
+Track cumulative prices over time
+Update price accumulators on every trade
+This enables TWAP (Time-Weighted Average Price) calculations
+
+Helper Functions
+
+Get current reserves
+Calculate optimal amounts for adding liquidity
+Price impact calculations
+Quote functions for estimating swap outputs
+
+Events
+
+Mint, Burn, and Swap events for tracking
+Sync events for reserve updates
+
+Safety Features
+
+Reentrancy protection
+Minimum liquidity lock
+Proper access controls
 
